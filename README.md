@@ -115,5 +115,44 @@ to get a email, create a topic and enable the subscription
 
 Installed jenkins as below 
 
+**vim jenkins.sh**
+
+yum install java-17-amazon-corretto -y
+sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
+sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
+yum install jenkins -y
+systemctl start jenkins
+
+After connecting the jeniks, created job with pipeline. then executed the below pipeline                   
+
+pipeline {
+    agent any
+
+    stages {
+        stage('Hello') {
+            steps {
+                git 'https://github.com/naveenpola2/Terraform-setup.git'
+            }
+        }
+        stage('init'){
+            steps {
+                sh 'terraform init --upgrade'   
+                
+            }
+        }
+        stage('plan'){
+            steps {
+                sh 'terraform plan'
+            }
+        }
+        stage('apply'){
+            steps{
+                sh 'terraform apply --auto-approve'
+        }
+        
+    }
+}
+
+
           
 
