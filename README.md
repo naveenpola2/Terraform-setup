@@ -66,7 +66,7 @@ yum install httpd -y
 systemctl start httpd 
 
 vim index.html
-<h1> hellow world </h1>
+<h1> hello world </h1>
 
 mv index.html /var/www/html
 
