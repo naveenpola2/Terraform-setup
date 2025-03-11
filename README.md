@@ -125,6 +125,7 @@ systemctl start jenkins
 
 After connecting the jeniks, created job with pipeline. then executed the below pipeline                   
 
+
 pipeline {
     agent any
     stages {
