@@ -1,6 +1,6 @@
 # steps that executed
 
-1. terraform setup a
+1. terraform setup
 
 launch an instance with t2.micro, keypair, securtity groups(all traffic) 
 install terraform init
@@ -136,7 +136,7 @@ pipeline {
         }
         stage('init'){
             steps {
-                sh 'terraform init --upgrade'   
+                sh 'terraform init '   
                 
             }
         }
