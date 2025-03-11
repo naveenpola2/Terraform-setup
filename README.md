@@ -127,7 +127,6 @@ After connecting the jeniks, created job with pipeline. then executed the below 
 
 pipeline {
     agent any
-
     stages {
         stage('Hello') {
             steps {
@@ -136,22 +135,31 @@ pipeline {
         }
         stage('init'){
             steps {
-                sh 'terraform init '   
+                sh 'terraform init --upgrade'   
                 
             }
         }
-        stage('plan'){
+        stage('validate'){
             steps {
+                sh 'terraform validate'
+            }
+        }
+        stage('plan'){
+            steps{
                 sh 'terraform plan'
+                
             }
         }
         stage('apply'){
             steps{
                 sh 'terraform apply --auto-approve'
+            }
         }
         
     }
 }
+
+
 
 
           
